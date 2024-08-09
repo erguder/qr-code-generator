@@ -8,6 +8,9 @@ const qrRoutes = require('./routes/qrRoutes');
 const app = express();
 const supabase = createClient(config.supabaseUrl, config.supabaseKey);
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

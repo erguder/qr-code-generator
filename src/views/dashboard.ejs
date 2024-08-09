@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Your Saved QR Codes</h1>
+    <ul>
+        <% if (qrcodes.length > 0) { %>
+            <% qrcodes.forEach(function(qr) { %>
+                <li>
+                    <img src="<%= qr.qr_code %>" alt="QR Code">
+                    <p>Link: <%= qr.link %></p>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>No QR codes saved yet.</p>
+        <% } %>
+    </ul>
+    <p><a href="/generate">Generate a new QR Code</a></p>
+    <p><a href="/logout">Logout</a></p>
+</body>
+</html>
