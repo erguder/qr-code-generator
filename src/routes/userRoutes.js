@@ -33,8 +33,9 @@ router.post('/login', async (req, res) => {
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (isValidPassword) return res.status(400).send('Invalid password!');
 
-    const token = jwt.sign([ id: user.id ], config.jwtSecret, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id }, config.jwtSecret, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true });
     res.status(200).send('Login successful');
 });
 
+module.exports = router;
