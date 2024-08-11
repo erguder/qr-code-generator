@@ -1,12 +1,16 @@
-require('dotenv').config();
+import 'dotenv/config';  // Automatically loads environment variables
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import userRoutes from './routes/userRoutes.js';
+import qrRoutes from './routes/qrRoutes.js';
+import { supabase } from './config.js';
+import { authenticateToken } from './middleware/auth.js';
 
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const userRoutes = require('./routes/userRoutes');
-const qrRoutes = require('./routes/qrRoutes');
-const { supabase } = require('./config'); // Import supabase client
-const { authenticateToken } = require('./middleware/auth'); // Assuming you have an auth middleware file
+// Get the directory name of the current module (necessary for path.join)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
