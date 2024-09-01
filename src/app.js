@@ -2,11 +2,11 @@ import 'dotenv/config';  // Automatically loads environment variables
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import userRoutes from './routes/userRoutes.js';
 import qrRoutes from './routes/qrRoutes.js';
 import { supabase } from './config.js';
 import { authenticateToken } from './middleware/auth.js';
+import { fileURLToPath } from 'url';
+import userRoutes from './routes/userRoutes.js';
 
 // Get the directory name of the current module (necessary for path.join)
 const __filename = fileURLToPath(import.meta.url);
